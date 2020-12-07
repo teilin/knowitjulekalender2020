@@ -12,11 +12,13 @@ class Program
         for(var i=startY;i>=0;i--)
         {
             var j = 0;
-            while((-1*j)+startX > 0 && (forrest[i][(-1*j)+startX] != ' ' || forrest[i][j+startX] != ' '))
+            if(forrest[i][startX] == ' ' && (forrest[i][--startX]=='#' || forrest[i][++startX]=='#')) return false;
+            while((-1*j)+startX >= 0 && (forrest[i][(-1*j)+startX] != ' ' || forrest[i][j+startX] != ' '))
             {
                 if((-1*j)+startX >= 0 && forrest[i][(-1*j)+startX] != forrest[i][j+startX]) return false;
                 j++;
             }
+
         }
 
         return isSymmetric;
